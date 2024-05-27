@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Bot Steuerung</title>
     <style>
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #2c2f33;
@@ -15,13 +35,22 @@
             flex-direction: column;
             min-height: 100vh;
         }
+
         header {
             background-color: #7289da;
             color: white;
             padding: 1rem;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease-out;
         }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out infinite alternate;
+        }
+
         nav {
             background-color: #23272a;
             padding: 1rem;
@@ -29,6 +58,7 @@
             justify-content: space-between;
             align-items: center;
         }
+
         nav a {
             color: white;
             text-decoration: none;
@@ -36,9 +66,11 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
+
         nav a:hover {
             background-color: #7289da;
         }
+
         main {
             flex: 1;
             padding: 2rem;
@@ -47,17 +79,20 @@
             align-items: center;
             justify-content: center;
         }
+
         footer {
             background-color: #23272a;
             color: white;
             text-align: center;
             padding: 1rem;
         }
+
         .container {
             max-width: 800px;
             width: 100%;
             text-align: center;
         }
+
         .login-btn {
             background-color: #5865f2;
             color: white;
@@ -69,9 +104,11 @@
             text-decoration: none;
             transition: background-color 0.3s ease;
         }
+
         .login-btn:hover {
             background-color: #4752c4;
         }
+
         .button {
             background-color: #43b581;
             color: white;
@@ -83,32 +120,42 @@
             margin: 1rem;
             transition: background-color 0.3s ease;
         }
+
         .button:hover {
             background-color: #3a9c6e;
         }
-        .features, .about, .contact, .faq, .feedback, .docs {
-            margin: 2rem 0;
-            text-align: left;
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
         }
-        .features ul, .faq ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .features li, .faq li {
-            background: #3a3f45;
-            margin: 0.5rem 0;
-            padding: 1rem;
-            border-radius: 5px;
-        }
-        .features h3, .about h3, .contact h3, .faq h3, .feedback h3, .docs h3 {
-            margin-bottom: 1rem;
-        }
-        .docs iframe {
-            width: 100%;
-            height: 600px;
+
+        .tabs button {
+            background-color: #2c2f33;
+            color: #ffffff;
             border: none;
-            border-radius: 5px;
-            margin-top: 1rem;
+            padding: 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .tabs button:hover {
+            background-color: #7289da;
+        }
+
+        .tabs button.active {
+            background-color: #7289da;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
@@ -117,27 +164,23 @@
         <h1>Ticket Bot Steuerung</h1>
     </header>
     <nav>
-        <div>
-            <a href="#features">Funktionen</a>
-            <a href="#about">Über den Bot</a>
-            <a href="#contact">Kontakt</a>
-            <a href="#faq">FAQ</a>
-            <a href="#feedback">Feedback</a>
-            <a href="#docs">Dokumentation</a>
+        <div class="tabs">
+            <button class="tab-link active" onclick="openTab(event, 'features')">Funktionen</button>
+            <button class="tab-link" onclick="openTab(event, 'about')">Über den Bot</button>
+            <button class="tab-link" onclick="openTab(event, 'contact')">Kontakt</button>
+            <button class="tab-link" onclick="openTab(event, 'faq')">FAQ</button>
+            <button class="tab-link" onclick="openTab(event, 'feedback')">Feedback</button>
+            <button class="tab-link" onclick="openTab(event, 'docs')">Dokumentation</button>
         </div>
         <a class="login-btn" href="http://yourdomain.com/login">Mit Discord Anmelden</a>
     </nav>
     <main class="container">
-        <h2>Willkommen</h2>
-        <p>Bitte melden Sie sich mit Ihrem Discord-Konto an, um die Bot-Funktionen zu verwenden.</p>
-        
         <div id="bot-controls" style="display:none;">
             <h2>Bot Steuerung</h2>
             <button class="button" onclick="createTicket()">Ticket Erstellen</button>
-            <!-- Weitere Bot-Funktionen hier -->
         </div>
 
-        <section id="features" class="features">
+        <section id="features" class="tab-content active">
             <h3>Funktionen des Bots</h3>
             <ul>
                 <li>Ticket-Erstellung: Nutzer können ein Ticket erstellen, das automatisch in einem neuen Kanal geöffnet wird.</li>
@@ -147,17 +190,17 @@
             </ul>
         </section>
 
-        <section id="about" class="about">
+        <section id="about" class="tab-content">
             <h3>Über den Bot</h3>
             <p>Unser Ticket Bot wurde entwickelt, um den Support in Discord-Servern effizient zu verwalten. Mit einfachen Befehlen und intuitiven Buttons können Nutzer schnell und einfach Hilfe anfordern, und das Support-Team kann Tickets effizient verwalten.</p>
         </section>
 
-        <section id="contact" class="contact">
+        <section id="contact" class="tab-content">
             <h3>Kontakt</h3>
             <p>Für weitere Informationen oder Unterstützung wenden Sie sich bitte an <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</p>
         </section>
 
-        <section id="faq" class="faq">
+        <section id="faq" class="tab-content">
             <h3>FAQ</h3>
             <ul>
                 <li><strong>Wie erstelle ich ein Ticket?</strong> - Verwenden Sie den Befehl <code>!createticket</code> in Ihrem Discord-Server.</li>
@@ -167,7 +210,7 @@
             </ul>
         </section>
 
-        <section id="feedback" class="feedback">
+        <section id="feedback" class="tab-content">
             <h3>Benutzerfeedback</h3>
             <p>Hier sind einige Rückmeldungen von Nutzern, die den Ticket Bot bereits verwenden:</p>
             <ul>
@@ -177,7 +220,7 @@
             </ul>
         </section>
 
-        <section id="docs" class="docs">
+        <section id="docs" class="tab-content">
             <h3>Anleitung und Dokumentation</h3>
             <p>Hier finden Sie die ausführliche Anleitung und Dokumentation zur Verwendung des Bots:</p>
             <iframe src="https://yourdomain.com/documentation.pdf"></iframe>
@@ -191,6 +234,20 @@
         function createTicket() {
             // Funktion zum Erstellen eines Tickets
             alert('Ticket wird erstellt...');
+        }
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
         }
 
         // Überprüfen, ob der Benutzer angemeldet ist
