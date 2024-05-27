@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine GitHub Page</title>
+    <title>Ticket Bot Steuerung</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,25 +35,58 @@
             margin: auto;
             padding: 1rem;
         }
+        .login-btn {
+            background-color: #7289da;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .login-btn:hover {
+            background-color: #5b6eae;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Willkommen auf meiner GitHub Page</h1>
+        <h1>Ticket Bot Steuerung</h1>
     </header>
     <main class="container">
-        <h2>Über mich</h2>
-        <p>Hallo! Dies ist eine einfache GitHub Page, die ich erstellt habe. Hier können Sie Informationen über mich finden und meine Projekte ansehen.</p>
+        <h2>Willkommen</h2>
+        <p>Bitte melden Sie sich mit Ihrem Discord-Konto an, um die Bot-Funktionen zu verwenden.</p>
+        <a class="login-btn" href="/login">Mit Discord Anmelden</a>
         
-        <h2>Projekte</h2>
-        <ul>
-            <li><a href="https://github.com/ShayRed/project1">Projekt 1</a></li>
-            <li><a href="https://github.com/ShayRed/project2">Projekt 2</a></li>
-            <li><a href="https://github.com/ShayRed/project3">Projekt 3</a></li>
-        </ul>
+        <div id="bot-controls" style="display:none;">
+            <h2>Bot Steuerung</h2>
+            <button onclick="createTicket()">Ticket Erstellen</button>
+            <!-- Weitere Bot-Funktionen hier -->
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 ShayRed</p>
     </footer>
+
+    <script>
+        function createTicket() {
+            // Funktion zum Erstellen eines Tickets
+            alert('Ticket wird erstellt...');
+        }
+
+        // Überprüfen, ob der Benutzer angemeldet ist
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/check-auth')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.authenticated) {
+                        document.querySelector('.login-btn').style.display = 'none';
+                        document.getElementById('bot-controls').style.display = 'block';
+                    }
+                });
+        });
+    </script>
 </body>
 </html>
