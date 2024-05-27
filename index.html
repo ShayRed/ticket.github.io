@@ -86,22 +86,29 @@
         .button:hover {
             background-color: #3a9c6e;
         }
-        .features, .about, .contact {
+        .features, .about, .contact, .faq, .feedback, .docs {
             margin: 2rem 0;
             text-align: left;
         }
-        .features ul {
+        .features ul, .faq ul {
             list-style-type: none;
             padding: 0;
         }
-        .features li {
+        .features li, .faq li {
             background: #3a3f45;
             margin: 0.5rem 0;
             padding: 1rem;
             border-radius: 5px;
         }
-        .features h3, .about h3, .contact h3 {
+        .features h3, .about h3, .contact h3, .faq h3, .feedback h3, .docs h3 {
             margin-bottom: 1rem;
+        }
+        .docs iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 1rem;
         }
     </style>
 </head>
@@ -114,6 +121,9 @@
             <a href="#features">Funktionen</a>
             <a href="#about">Über den Bot</a>
             <a href="#contact">Kontakt</a>
+            <a href="#faq">FAQ</a>
+            <a href="#feedback">Feedback</a>
+            <a href="#docs">Dokumentation</a>
         </div>
         <a class="login-btn" href="http://yourdomain.com/login">Mit Discord Anmelden</a>
     </nav>
@@ -145,6 +155,32 @@
         <section id="contact" class="contact">
             <h3>Kontakt</h3>
             <p>Für weitere Informationen oder Unterstützung wenden Sie sich bitte an <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</p>
+        </section>
+
+        <section id="faq" class="faq">
+            <h3>FAQ</h3>
+            <ul>
+                <li><strong>Wie erstelle ich ein Ticket?</strong> - Verwenden Sie den Befehl <code>!createticket</code> in Ihrem Discord-Server.</li>
+                <li><strong>Wie schließe ich ein Ticket?</strong> - Klicken Sie auf die Schaltfläche "Ticket schließen" im Ticket-Kanal.</li>
+                <li><strong>Kann ich ein geschlossenes Ticket wieder öffnen?</strong> - Ja, klicken Sie auf die Schaltfläche "Ticket öffnen".</li>
+                <li><strong>Wie lösche ich ein Ticket?</strong> - Admins können geschlossene Tickets dauerhaft löschen.</li>
+            </ul>
+        </section>
+
+        <section id="feedback" class="feedback">
+            <h3>Benutzerfeedback</h3>
+            <p>Hier sind einige Rückmeldungen von Nutzern, die den Ticket Bot bereits verwenden:</p>
+            <ul>
+                <li>"Der Bot hat unseren Support-Prozess stark verbessert!" - <strong>User123</strong></li>
+                <li>"Einfach zu bedienen und sehr effizient." - <strong>SupportTeam</strong></li>
+                <li>"Ich liebe die Ticket-Wiedereröffnungsfunktion!" - <strong>AdminMike</strong></li>
+            </ul>
+        </section>
+
+        <section id="docs" class="docs">
+            <h3>Anleitung und Dokumentation</h3>
+            <p>Hier finden Sie die ausführliche Anleitung und Dokumentation zur Verwendung des Bots:</p>
+            <iframe src="https://yourdomain.com/documentation.pdf"></iframe>
         </section>
     </main>
     <footer>
