@@ -22,6 +22,23 @@
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        nav {
+            background-color: #23272a;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #7289da;
+        }
         main {
             flex: 1;
             padding: 2rem;
@@ -69,22 +86,66 @@
         .button:hover {
             background-color: #3a9c6e;
         }
+        .features, .about, .contact {
+            margin: 2rem 0;
+            text-align: left;
+        }
+        .features ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .features li {
+            background: #3a3f45;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        .features h3, .about h3, .contact h3 {
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Ticket Bot Steuerung</h1>
     </header>
+    <nav>
+        <div>
+            <a href="#features">Funktionen</a>
+            <a href="#about">Über den Bot</a>
+            <a href="#contact">Kontakt</a>
+        </div>
+        <a class="login-btn" href="http://yourdomain.com/login">Mit Discord Anmelden</a>
+    </nav>
     <main class="container">
         <h2>Willkommen</h2>
         <p>Bitte melden Sie sich mit Ihrem Discord-Konto an, um die Bot-Funktionen zu verwenden.</p>
-        <a class="login-btn" href="http://yourdomain.com/login">Mit Discord Anmelden</a>
         
         <div id="bot-controls" style="display:none;">
             <h2>Bot Steuerung</h2>
             <button class="button" onclick="createTicket()">Ticket Erstellen</button>
             <!-- Weitere Bot-Funktionen hier -->
         </div>
+
+        <section id="features" class="features">
+            <h3>Funktionen des Bots</h3>
+            <ul>
+                <li>Ticket-Erstellung: Nutzer können ein Ticket erstellen, das automatisch in einem neuen Kanal geöffnet wird.</li>
+                <li>Ticket-Schließung: Nutzer und Admins können ein Ticket schließen, und es wird ein Transkript erstellt.</li>
+                <li>Ticket-Wiedereröffnung: Geschlossene Tickets können wieder geöffnet werden.</li>
+                <li>Ticket-Löschung: Admins können geschlossene Tickets dauerhaft löschen.</li>
+            </ul>
+        </section>
+
+        <section id="about" class="about">
+            <h3>Über den Bot</h3>
+            <p>Unser Ticket Bot wurde entwickelt, um den Support in Discord-Servern effizient zu verwalten. Mit einfachen Befehlen und intuitiven Buttons können Nutzer schnell und einfach Hilfe anfordern, und das Support-Team kann Tickets effizient verwalten.</p>
+        </section>
+
+        <section id="contact" class="contact">
+            <h3>Kontakt</h3>
+            <p>Für weitere Informationen oder Unterstützung wenden Sie sich bitte an <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</p>
+        </section>
     </main>
     <footer>
         <p>&copy; 2024 ShayRed</p>
