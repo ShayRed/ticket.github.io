@@ -6,48 +6,68 @@
     <title>Ticket Bot Steuerung</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #2c2f33;
+            color: #ffffff;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
-            background-color: #4CAF50;
+            background-color: #7289da;
             color: white;
             padding: 1rem;
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         main {
-            padding: 1rem;
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         footer {
-            background-color: #333;
+            background-color: #23272a;
             color: white;
             text-align: center;
-            padding: 0.5rem;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            padding: 1rem;
         }
         .container {
             max-width: 800px;
-            margin: auto;
-            padding: 1rem;
+            width: 100%;
+            text-align: center;
         }
         .login-btn {
-            background-color: #7289da;
+            background-color: #5865f2;
             color: white;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1.5rem;
             border: none;
             border-radius: 5px;
-            text-align: center;
-            display: inline-block;
+            font-size: 1rem;
             cursor: pointer;
             text-decoration: none;
+            transition: background-color 0.3s ease;
         }
         .login-btn:hover {
-            background-color: #5b6eae;
+            background-color: #4752c4;
+        }
+        .button {
+            background-color: #43b581;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #3a9c6e;
         }
     </style>
 </head>
@@ -62,7 +82,7 @@
         
         <div id="bot-controls" style="display:none;">
             <h2>Bot Steuerung</h2>
-            <button onclick="createTicket()">Ticket Erstellen</button>
+            <button class="button" onclick="createTicket()">Ticket Erstellen</button>
             <!-- Weitere Bot-Funktionen hier -->
         </div>
     </main>
