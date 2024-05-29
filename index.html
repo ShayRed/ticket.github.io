@@ -3,257 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket Bot Steuerung</title>
+    <title>Discord Bot Ticket System</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #2c2f33;
-            color: #ffffff;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            background-color: #f0f4f8;
+            color: #333;
         }
         header {
-            background-color: #23272a;
+            background-color: #3b5998;
             color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
         }
         header h1 {
-            font-size: 1.5rem;
             margin: 0;
+            font-size: 2.5em;
         }
         nav {
             display: flex;
-            gap: 1rem;
+            justify-content: center;
+            background-color: #3b5998;
+            padding: 10px 0;
         }
         nav a {
             color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            margin: 0 15px;
+            font-size: 1.1em;
         }
         nav a:hover {
-            background-color: #7289da;
-        }
-        .login-btn {
-            background-color: #5865f2;
-            color: white;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-        .login-btn:hover {
-            background-color: #4752c4;
+            text-decoration: underline;
         }
         main {
-            flex: 1;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .hero h2 {
-            font-size: 2.5rem;
-            margin: 0.5rem 0;
-        }
-        .hero p {
-            font-size: 1.2rem;
-        }
-        .hero .cta-buttons {
-            margin-top: 1rem;
-        }
-        .cta-button {
-            background-color: #7289da;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            margin: 0.5rem;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-        .cta-button:hover {
-            background-color: #5b6eae;
-        }
-        .features, .pricing, .about, .contact, .faq, .feedback, .docs {
-            width: 100%;
+            padding: 20px;
             max-width: 1200px;
-            margin: 2rem auto;
-            text-align: left;
+            margin: auto;
         }
-        .features h3, .pricing h3, .about h3, .contact h3, .faq h3, .feedback h3, .docs h3 {
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+        section {
+            margin-bottom: 20px;
         }
-        .features ul, .faq ul {
-            list-style-type: none;
-            padding: 0;
+        section h2 {
+            font-size: 2em;
+            color: #3b5998;
         }
-        .features li, .faq li {
-            background: #3a3f45;
-            margin: 0.5rem 0;
-            padding: 1rem;
-            border-radius: 5px;
+        section p {
+            font-size: 1.2em;
+            line-height: 1.6;
         }
-        .pricing-tables {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .pricing-table {
-            background: #3a3f45;
-            padding: 2rem;
-            border-radius: 5px;
-            width: 45%;
-            margin: 1rem;
+        footer {
+            background-color: #3b5998;
+            color: white;
             text-align: center;
-        }
-        .pricing-table h4 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .pricing-table p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-        .pricing-table ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .pricing-table li {
-            padding: 0.5rem 0;
-        }
-        .docs iframe {
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
             width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 5px;
-            margin-top: 1rem;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Ticket Bot Steuerung</h1>
-        <nav>
-            <a href="#features">Funktionen</a>
-            <a href="#pricing">Preise</a>
-            <a href="#about">Über den Bot</a>
-            <a href="#contact">Kontakt</a>
-            <a href="#faq">FAQ</a>
-            <a href="#feedback">Feedback</a>
-            <a href="#docs">Dokumentation</a>
-            <a class="login-btn" href="http://yourdomain.com/login">Login</a>
-        </nav>
+        <h1>Discord Bot Ticket System</h1>
     </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+    </nav>
     <main>
-        <section class="hero">
-            <h2>Ticket Bot Steuerung</h2>
-            <p>Ticketing ohne Unordnung</p>
-            <div class="cta-buttons">
-                <a href="http://yourdomain.com/invite" class="cta-button">Bot Einladen</a>
-                <a href="http://yourdomain.com/manage" class="cta-button">Server Verwalten</a>
-            </div>
+        <section id="home">
+            <h2>Home</h2>
+            <p>Welcome to the Discord Bot Ticket System. Our bot helps you manage tickets efficiently and provides seamless support tracking.</p>
         </section>
-
-        <section id="features" class="features">
-            <h3>Funktionen des Bots</h3>
-            <ul>
-                <li>Ticket-Erstellung: Nutzer können ein Ticket erstellen, das automatisch in einem neuen Kanal geöffnet wird.</li>
-                <li>Ticket-Schließung: Nutzer und Admins können ein Ticket schließen, und es wird ein Transkript erstellt.</li>
-                <li>Ticket-Wiedereröffnung: Geschlossene Tickets können wieder geöffnet werden.</li>
-                <li>Ticket-Löschung: Admins können geschlossene Tickets dauerhaft löschen.</li>
-            </ul>
+        <section id="features">
+            <h2>Features</h2>
+            <p>Our bot allows for easy ticket creation, management, and monitoring. Features include automated responses, customizable templates, and detailed analytics.</p>
         </section>
-
-        <section id="pricing" class="pricing">
-            <h3>Preise</h3>
-            <div class="pricing-tables">
-                <div class="pricing-table">
-                    <h4>Premium</h4>
-                    <p>$5.99 pro Monat</p>
-                    <ul>
-                        <li>Unbegrenzte Panels</li>
-                        <li>Transkripte generieren</li>
-                        <li>Support-Rollen</li>
-                        <li>Unbegrenzte Tickets</li>
-                        <li>Schnellere Premium-Only-Bot</li>
-                        <li>Automatische Transkripte</li>
-                        <li>Volle Anpassung</li>
-                        <li>Benutzerdefinierte Reaktionen</li>
-                        <li>Direktnachrichten</li>
-                        <li>Ticket-Automatisierung</li>
-                    </ul>
-                </div>
-                <div class="pricing-table">
-                    <h4>Standard</h4>
-                    <p>Kostenlos</p>
-                    <ul>
-                        <li>Unbegrenzte Panels</li>
-                        <li>Transkripte generieren</li>
-                        <li>Support-Rollen</li>
-                        <li>10 Tickets pro Minute</li>
-                        <li>Basis-Bot-Funktionalität</li>
-                    </ul>
-                </div>
-            </div>
+        <section id="pricing">
+            <h2>Pricing</h2>
+            <p>We offer competitive pricing plans to suit different needs. Choose from basic, pro, and enterprise plans to get the best value for your requirements.</p>
         </section>
-
-        <section id="about" class="about">
-            <h3>Über den Bot</h3>
-            <p>Unser Ticket Bot wurde entwickelt, um den Support in Discord-Servern effizient zu verwalten. Mit einfachen Befehlen und intuitiven Buttons können Nutzer schnell und einfach Hilfe anfordern, und das Support-Team kann Tickets effizient verwalten.</p>
-        </section>
-
-        <section id="contact" class="contact">
-            <h3>Kontakt</h3>
-            <p>Für weitere Informationen oder Unterstützung wenden Sie sich bitte an <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</p>
-        </section>
-
-        <section id="faq" class="faq">
-            <h3>FAQ</h3>
-            <ul>
-                <li><strong>Wie erstelle ich ein Ticket?</strong> - Verwenden Sie den Befehl <code>!createticket</code> in Ihrem Discord-Server.</li>
-                <li><strong>Wie schließe ich ein Ticket?</strong> - Klicken Sie auf die Schaltfläche "Ticket schließen" im Ticket-Kanal.</li>
-                <li><strong>Kann ich ein geschlossenes Ticket wieder öffnen?</strong> - Ja, klicken Sie auf die Schaltfläche "Ticket öffnen".</li>
-                <li><strong>Wie lösche ich ein Ticket?</strong> - Admins können geschlossene Tickets dauerhaft löschen.</li>
-            </ul>
-        </section>
-
-        <section id="feedback" class="feedback">
-            <h3>Benutzerfeedback</h3>
-            <p>Hier sind einige Rückmeldungen von Nutzern, die den Ticket Bot bereits verwenden:</p>
-            <ul>
-                <li>"Der Bot hat unseren Support-Prozess stark verbessert!" - <strong>User123</strong></li>
-                <li>"Einfach zu bedienen und sehr effizient." - <strong>SupportTeam</strong></li>
-                <li>"Ich liebe die Ticket-Wiedereröffnungsfunktion!" - <strong>AdminMike</strong></li>
-            </ul>
-        </section>
-
-        <section id="docs" class="docs">
-            <h3>Anleitung und Dokumentation</h3>
-            <p>Hier finden Sie die ausführliche Anleitung und Dokumentation zur Verwendung des Bots:</p>
-            <iframe src="https://yourdomain.com/documentation.pdf"></iframe>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Need help or have questions? Reach out to our support team through the contact form or via email at support@example.com.</p>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 ShayRed</p>
+        &copy; 2024 Discord Bot Ticket System. All rights reserved.
     </footer>
 </body>
 </html>
